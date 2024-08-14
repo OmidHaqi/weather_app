@@ -1,13 +1,16 @@
 name: clean_arcitechture_edu
-description: "A new Flutter project."
+description: "A new flutter project for learn clean arctiechrure by weather app."
 publish_to: 'none'
-version: 0.1.0
+
+version: 0.0.1
 
 environment:
   sdk: '>=3.4.4 <4.0.0'
 
 dependencies:
 
+  cupertino_icons: ^1.0.8
+  dio: ^5.6.0
   flutter:
     sdk: flutter
 
@@ -18,3 +21,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  # assets:
+  #   - assets/images/
