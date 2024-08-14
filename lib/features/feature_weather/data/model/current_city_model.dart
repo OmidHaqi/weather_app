@@ -16,37 +16,22 @@
 import 'package:clean_arcitechture_edu/features/feature_weather/domain/entities/current_city_entity.dart';
 
 class CurrentCityModel extends CurrentCityEntity {
-  CurrentCityModel({
-    Coord? coord,
-    List<Weather>? weather,
-    String? base,
-    Main? main,
-    int? visibility,
-    Wind? wind,
-    Rain? rain,
-    Clouds? clouds,
-    int? dt,
-    Sys? sys,
-    int? timezone,
-    int? id,
-    String? name,
-    int? cod,
-  }) : super(
-          coord: coord,
-          weather: weather,
-          base: base,
-          main: main,
-          visibility: visibility,
-          wind: wind,
-          rain: rain,
-          clouds: clouds,
-          dt: dt,
-          sys: sys,
-          timezone: timezone,
-          id: id,
-          name: name,
-          cod: cod,
-        );
+  const CurrentCityModel({
+    super.coord,
+    super.weather,
+    super.base,
+    super.main,
+    super.visibility,
+    super.wind,
+    super.rain,
+    super.clouds,
+    super.dt,
+    super.sys,
+    super.timezone,
+    super.id,
+    super.name,
+    super.cod,
+  });
 
   factory CurrentCityModel.fromJson(dynamic json) {
     List<Weather> weather = [];
@@ -96,11 +81,11 @@ class Sys {
     sunrise = json['sunrise'];
     sunset = json['sunset'];
   }
-  int? type;
-  int? id;
+  num? type;
+  num? id;
   String? country;
-  int? sunrise;
-  int? sunset;
+  num? sunrise;
+  num? sunset;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -123,7 +108,7 @@ class Clouds {
   Clouds.fromJson(dynamic json) {
     all = json['all'];
   }
-  int? all;
+  num? all;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -142,7 +127,7 @@ class Rain {
   Rain.fromJson(dynamic json) {
     h = json['1h'];
   }
-  double? h;
+  num? h;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -167,9 +152,9 @@ class Wind {
     deg = json['deg'];
     gust = json['gust'];
   }
-  double? speed;
-  int? deg;
-  double? gust;
+  num? speed;
+  num? deg;
+  num? gust;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -211,14 +196,14 @@ class Main {
     seaLevel = json['sea_level'];
     grndLevel = json['grnd_level'];
   }
-  double? temp;
-  double? feelsLike;
-  double? tempMin;
-  double? tempMax;
-  int? pressure;
-  int? humidity;
-  int? seaLevel;
-  int? grndLevel;
+  num? temp;
+  num? feelsLike;
+  num? tempMin;
+  num? tempMax;
+  num? pressure;
+  num? humidity;
+  num? seaLevel;
+  num? grndLevel;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -253,7 +238,7 @@ class Weather {
     description = json['description'];
     icon = json['icon'];
   }
-  int? id;
+  num? id;
   String? main;
   String? description;
   String? icon;
@@ -281,8 +266,8 @@ class Coord {
     lon = json['lon'];
     lat = json['lat'];
   }
-  double? lon;
-  double? lat;
+  num? lon;
+  num? lat;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
