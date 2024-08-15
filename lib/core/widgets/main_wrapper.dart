@@ -13,7 +13,7 @@ class MainWrapper extends StatefulWidget {
 class _MainWrapperState extends State<MainWrapper> {
   @override
   void initState() {
-    BlocProvider.of<HomeBloc>(context).add(const LoadCwEvent('Tehran'));
+    BlocProvider.of<HomeBloc>(context).add(const LoadCwEvent('London'));
     super.initState();
   }
 

@@ -5,19 +5,16 @@ import 'package:dio/dio.dart';
 
 class ApiProvider {
   final Dio _dio = Dio();
-  var apikey = Constants.apiKay1;
-  
+  var apikey = Constants.apiKey1;
+
   //? current weather api call
   Future<dynamic> callCurrentWeather(cityName) async {
-    var response = await _dio.get(
-      '${Constants.baseUrl}/date/2.5/weather',
-      queryParameters: {
-        'q': cityName,
-        'appid': apikey,
-        'units': 'metric',
-      },
-    );
-    print(response.data);
+    var response = await _dio
+        .get('${Constants.baseUrl}/data/2.5/weather', queryParameters: {
+      'q': cityName,
+      'appid': apikey,
+      'units': 'metric',
+    });
     return response;
   }
 }
