@@ -1,5 +1,5 @@
-import 'package:clean_arcitechture_edu/features/feature_weather/domain/entities/current_city_entity.dart';
 import 'package:flutter/material.dart';
+import '../../domain/entities/current_city_entity.dart';
 
 @immutable
 abstract class CwStatus {}
