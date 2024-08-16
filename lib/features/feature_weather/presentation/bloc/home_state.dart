@@ -1,13 +1,24 @@
 part of 'home_bloc.dart';
 
-class HomeState {
+class HomeState extends Equatable{
   final CwStatus cwStatus;
+  final FwStatus fwStatus;
 
-  HomeState({required this.cwStatus});
+  const HomeState({required this.cwStatus, required this.fwStatus});
 
   HomeState copyWith({
     CwStatus? newCwStatus,
-  }) {
-    return HomeState(cwStatus: newCwStatus ?? cwStatus);
+    FwStatus? newFwStatus
+  }){
+    return HomeState(
+        cwStatus: newCwStatus ?? cwStatus,
+        fwStatus: newFwStatus ?? fwStatus
+    );
   }
+
+  @override
+  List<Object?> get props => [
+    cwStatus,
+    fwStatus
+  ];
 }

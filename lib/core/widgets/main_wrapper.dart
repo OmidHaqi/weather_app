@@ -1,45 +1,39 @@
-import 'package:clean_arcitechture_edu/features/feature_weather/presentation/bloc/cw_status.dart';
-import 'package:clean_arcitechture_edu/features/feature_weather/presentation/bloc/home_bloc.dart';
+import 'package:clean_arcitechture_edu/core/widgets/app_background.dart';
+import 'package:clean_arcitechture_edu/features/feature_bookmark/presentation/screens/bookmark_screen.dart';
+import 'package:clean_arcitechture_edu/core/widgets/bottom_nav.dart';
+import 'package:clean_arcitechture_edu/features/feature_weather/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-class MainWrapper extends StatefulWidget {
-  const MainWrapper({super.key});
+class MainWrapper extends StatelessWidget {
+  MainWrapper({super.key});
 
-  @override
-  State<MainWrapper> createState() => _MainWrapperState();
-}
-
-class _MainWrapperState extends State<MainWrapper> {
-  @override
-  void initState() {
-    BlocProvider.of<HomeBloc>(context).add(const LoadCwEvent('London'));
-    super.initState();
-  }
+  final PageController pageController = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: BlocBuilder<HomeBloc, HomeState>(
-          builder: (context, state) {
-            if (state.cwStatus is CwLoading) {
-              return const Center(
-                child: Text('Loading...'),
-              );
-            }
-            if (state.cwStatus is CwCompleted) {
-              return const Center(
-                child: Text('Completed'),
-              );
-            }
-            if (state.cwStatus is CwError) {
-              return const Center(
-                child: Text('Error'),
-              );
-            }
-            return const Text('CleanArcitechtureEdu');
-          },
+    List<Widget> pageViewWidgets = [const HomeScreen(), const BookmarkScreen()];
+    var height = MediaQuery.sizeOf(context).height;
+    var width = MediaQuery.sizeOf(context).width;
+    return SafeArea(
+      child: Scaffold(
+        extendBody: true,
+        bottomNavigationBar: BottomNav(
+          controller: pageController,
+        ),
+        body: Container(
+          height: height,
+          width: width,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+            image: AppBackground.getBackGroundImage(),
+            fit: BoxFit.cover,
+          )),
+          child: PageView(
+            physics: const AlwaysScrollableScrollPhysics()
+                  .applyTo(const BouncingScrollPhysics()),
+            controller: pageController,
+            children: pageViewWidgets,
+          ),
         ),
       ),
     );
