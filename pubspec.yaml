@@ -10,6 +10,7 @@ environment:
 dependencies:
 
   bloc: ^8.1.4
+  bloc_test: ^9.1.7
   blurbox: ^0.0.3
   cupertino_icons: ^1.0.8
   dio: ^5.6.0
@@ -22,6 +23,7 @@ dependencies:
   get_it: ^7.7.0
   intl: ^0.19.0
   loading_animation_widget: ^1.2.1
+  mockito: ^5.4.4
   smooth_page_indicator: ^1.2.0+3
   sqflite: ^2.3.3+1
 
