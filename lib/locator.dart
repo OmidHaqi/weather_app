@@ -1,3 +1,4 @@
+import 'package:clean_arcitechture_edu/features/feature_bookmark/data/date_sorurce/local/database.dart';
 import 'package:get_it/get_it.dart';
 
 import 'features/feature_weather/data/date_sorurce/remote/api_provider.dart';
@@ -9,11 +10,16 @@ import 'features/feature_weather/presentation/bloc/home_bloc.dart';
 
 GetIt locator = GetIt.instance;
 
-setUp() {
+setUp() async {
   //*ApiProvider
   locator.registerSingleton<ApiProvider>(
     ApiProvider(),
   );
+
+  //*Init Floor
+  final dataBase =
+      await $FloorAppDatabase.databaseBuilder('app_database.db').build();
+  locator.registerSingleton<AppDatabase>(dataBase);
 
   //*Repositories
   locator.registerSingleton<IWeatherRepository>(

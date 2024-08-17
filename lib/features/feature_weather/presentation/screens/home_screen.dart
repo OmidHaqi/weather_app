@@ -235,11 +235,10 @@ class _HomeScreenState extends State<HomeScreen> {
             );
           }
           if (state.cwStatus is CwError) {
-            return const Text('Error');
+            //TODO: impl error handeling ...
+            return const Expanded(child: Center(child: Text('Error')));
           }
-          return const Text(
-            'UnKnow Error',
-          );
+           return const Expanded(child: Center(child: Text('Unknow Error')));
         })
       ],
     );
