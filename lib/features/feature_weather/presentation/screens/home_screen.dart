@@ -1,19 +1,19 @@
-import 'dart:developer';
-
 import 'package:blurbox/blurbox.dart';
-import 'package:clean_arcitechture_edu/core/widgets/app_background.dart';
-import 'package:clean_arcitechture_edu/core/widgets/dot_loading_widget.dart';
-import 'package:clean_arcitechture_edu/features/feature_weather/data/model/forecast_days_model.dart';
-import 'package:clean_arcitechture_edu/features/feature_weather/domain/entities/current_city_entity.dart';
-import 'package:clean_arcitechture_edu/features/feature_weather/presentation/bloc/cw_status.dart';
-import 'package:clean_arcitechture_edu/features/feature_weather/presentation/bloc/home_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/params/forecast_params.dart';
-
+import '../../../../core/widgets/app_background.dart';
+import '../../../../core/widgets/dot_loading_widget.dart';
+import '../../../../locator.dart';
+import '../../data/model/forecast_days_model.dart';
+import '../../domain/entities/current_city_entity.dart';
 import '../../domain/entities/forecase_days_entity.dart';
+import '../../domain/use_cases/get_suggestion_city_usecase.dart';
+import '../bloc/cw_status.dart';
 import '../bloc/fw_status.dart';
+import '../bloc/home_bloc.dart';
+import '../widgets/city_search.dart';
 import '../widgets/day_weather_view.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -24,6 +24,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  TextEditingController textEditingController = TextEditingController();
+
+  GetSuggestionCityUseCase getSuggestionCityUseCase =
+      GetSuggestionCityUseCase(locator());
   String cityName = 'Zanjan';
   @override
   void initState() {
@@ -38,6 +42,24 @@ class _HomeScreenState extends State<HomeScreen> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        SizedBox(height: height * 0.02),
+        //? search box
+        Row(
+          children: [
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: CitySearch(
+                  width: width,
+                  textEditingController: textEditingController,
+                  getSuggestionCityUseCase: getSuggestionCityUseCase,
+                ),
+              ),
+            ),
+          ],
+        ),
+
+        //? main UI
         BlocBuilder<HomeBloc, HomeState>(buildWhen: (previous, current) {
           if (previous.cwStatus == current.cwStatus) {
             return false;
@@ -102,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           Text(
-                            '${currentCityEntity.main!.temp!.round().toString()}\u00B0',
+                            '${currentCityEntity.main!.temp!.round().toString()}\u00B0C',
                             style: const TextStyle(
                               fontSize: 46,
                               fontWeight: FontWeight.bold,
@@ -119,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       children: [
                                         const Text('Max'),
                                         Text(
-                                            '${currentCityEntity.main!.tempMax!.round().toString()}\u00B0'),
+                                            '${currentCityEntity.main!.tempMax!.round().toString()}\u00B0C'),
                                       ],
                                     ),
                                     Padding(
@@ -135,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       children: [
                                         const Text('Min'),
                                         Text(
-                                            '${currentCityEntity.main!.tempMin!.round().toString()}\u00B0'),
+                                            '${currentCityEntity.main!.tempMin!.round().toString()}\u00B0C'),
                                       ],
                                     ),
                                   ],
@@ -143,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    'feels like ${currentCityEntity.main!.feelsLike!.round().toString()}\u00B0',
+                                    'feels like ${currentCityEntity.main!.feelsLike!.round().toString()}\u00B0C',
                                     style: const TextStyle(fontSize: 22),
                                   ),
                                 ),
@@ -166,7 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             if (state.fwStatus is FwLoading) {
                               return const DotLoadingWidget();
                             }
-                  
+
                             /// show Completed State for Fw
                             if (state.fwStatus is FwCompleted) {
                               /// casting
@@ -176,7 +198,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   fwCompleted.forecastDaysEntity;
                               final List<DataList> mainDaily =
                                   forecastDaysEntity.list!;
-                  
+
                               return ListView.builder(
                                 physics: const AlwaysScrollableScrollPhysics()
                                     .applyTo(const BouncingScrollPhysics()),
@@ -192,16 +214,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                 },
                               );
                             }
-                  
+
                             /// show Error State for Fw
                             if (state.fwStatus is FwError) {
-                              final FwError fwError =
-                                  state.fwStatus as FwError;
+                              final FwError fwError = state.fwStatus as FwError;
                               return Center(
                                 child: Text(fwError.message!),
                               );
                             }
-                  
+
                             /// show Default State for Fw
                             return Container();
                           },

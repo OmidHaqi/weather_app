@@ -1,13 +1,15 @@
-import 'package:clean_arcitechture_edu/core/resources/date_state.dart';
-import 'package:clean_arcitechture_edu/features/feature_weather/data/date_sorurce/remote/api_provider.dart';
-import 'package:clean_arcitechture_edu/features/feature_weather/data/model/current_city_model.dart';
-import 'package:clean_arcitechture_edu/features/feature_weather/domain/entities/current_city_entity.dart';
-import 'package:clean_arcitechture_edu/features/feature_weather/domain/repository/weather_repository.dart';
 import 'package:dio/dio.dart';
 
 import '../../../../core/params/forecast_params.dart';
+import '../../../../core/resources/date_state.dart';
+import '../../domain/entities/current_city_entity.dart';
 import '../../domain/entities/forecase_days_entity.dart';
+import '../../domain/entities/suggest_city_entity.dart';
+import '../../domain/repository/weather_repository.dart';
+import '../date_sorurce/remote/api_provider.dart';
+import '../model/current_city_model.dart';
 import '../model/forecast_days_model.dart';
+import '../model/suggest_city_model.dart';
 
 class WeatherRepositoryImpl extends IWeatherRepository {
   ApiProvider apiProvider;
@@ -49,5 +51,15 @@ class WeatherRepositoryImpl extends IWeatherRepository {
       print(e);
       return DataFailed("please check your connection...");
     }
+  }
+
+  @override
+  Future<List<Data>> fetchSuggestData(cityName) async {
+
+    Response response = await apiProvider.sendRequestCitySuggestion(cityName);
+    SuggestCityEntity suggestCityEntity =
+        SuggestCityModel.fromJson(response.data);
+
+    return suggestCityEntity.data!;
   }
 }

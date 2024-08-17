@@ -34,15 +34,15 @@ class CurrentCityModel extends CurrentCityEntity {
   });
 
   factory CurrentCityModel.fromJson(dynamic json) {
-    List<Weather> weather = [];
+    List<Weather> listWeather = [];
     if (json['weather'] != null) {
       json['weather'].forEach((v) {
-        weather.add(Weather.fromJson(v));
+        listWeather.add(Weather.fromJson(v));
       });
     }
     return CurrentCityModel(
       coord: json['coord'] != null ? Coord.fromJson(json['coord']) : null,
-      weather: weather,
+      weather: listWeather,
       base: json['base'],
       main: json['main'] != null ? Main.fromJson(json['main']) : null,
       visibility: json['visibility'],

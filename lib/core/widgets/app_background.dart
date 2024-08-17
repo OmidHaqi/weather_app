@@ -2,6 +2,8 @@ import 'package:clean_arcitechture_edu/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+
+
 class AppBackground {
 static AssetImage getBackGroundImage() {
   DateTime now = DateTime.now();

@@ -4,7 +4,7 @@ class AppTheme {
   static ThemeData themeData() {
     return ThemeData(
       brightness: Brightness.dark,
-      fontFamily: 'Ubuntu'
+      fontFamily: 'Ubuntu',
       
     );
   }

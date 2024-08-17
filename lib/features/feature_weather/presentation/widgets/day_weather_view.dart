@@ -1,9 +1,9 @@
 import 'package:blurbox/blurbox.dart';
-import 'package:clean_arcitechture_edu/features/feature_weather/data/model/forecast_days_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/date_converter.dart';
 import '../../../../core/widgets/app_background.dart';
+import '../../data/model/forecast_days_model.dart';
 
 class DaysWeatherView extends StatelessWidget {
   final DataList daily;
@@ -45,7 +45,7 @@ class DaysWeatherView extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(top: 5.0),
                 child: Text(
-                  "${daily.main?.temp!.round()}\u00B0",
+                  "${daily.main?.temp!.round()}\u00B0C",
                   style: const TextStyle(
                       fontSize: 15, color: Colors.white),
                 ),
