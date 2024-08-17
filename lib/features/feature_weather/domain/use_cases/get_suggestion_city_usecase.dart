@@ -2,7 +2,7 @@ import '../../../../core/use_case/use_case.dart';
 import '../../data/model/suggest_city_model.dart';
 import '../repository/weather_repository.dart';
 
-class GetSuggestionCityUseCase implements UseCase<List<Data>, String>{
+class GetSuggestionCityUseCase implements UseCase<List<Data>, String> {
   final IWeatherRepository _weatherRepository;
   GetSuggestionCityUseCase(this._weatherRepository);
 
@@ -10,5 +10,4 @@ class GetSuggestionCityUseCase implements UseCase<List<Data>, String>{
   Future<List<Data>> call(String params) {
     return _weatherRepository.fetchSuggestData(params);
   }
-
 }

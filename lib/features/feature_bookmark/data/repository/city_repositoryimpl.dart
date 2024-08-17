@@ -1,5 +1,3 @@
-
-
 import '../../../../core/resources/date_state.dart';
 import '../../domain/entities/city_entity.dart';
 import '../../domain/repository/city_repository.dart';

@@ -55,7 +55,6 @@ class WeatherRepositoryImpl extends IWeatherRepository {
 
   @override
   Future<List<Data>> fetchSuggestData(cityName) async {
-
     Response response = await apiProvider.sendRequestCitySuggestion(cityName);
     SuggestCityEntity suggestCityEntity =
         SuggestCityModel.fromJson(response.data);

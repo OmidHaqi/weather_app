@@ -22,20 +22,28 @@ class CitySearch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TypeAheadField(
-      
       emptyBuilder: (context) => BlurBox(
         blur: 10,
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.white.withOpacity(0.3,),),
+        border: Border.all(
+          color: Colors.white.withOpacity(
+            0.3,
+          ),
+        ),
         width: width,
         height: 400,
         child: const Center(
           child: Text('Item not found'),
         ),
       ),
-      errorBuilder: (context , error) => BlurBox(
+      errorBuilder: (context, error) => BlurBox(
         blur: 10,
-        borderRadius: BorderRadius.circular(8),border: Border.all(color: Colors.white.withOpacity(0.3,),),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: Colors.white.withOpacity(
+            0.3,
+          ),
+        ),
         width: width,
         height: 400,
         child: const Center(
@@ -45,7 +53,12 @@ class CitySearch extends StatelessWidget {
       loadingBuilder: (context) => BlurBox(
         blur: 10,
         borderRadius: BorderRadius.circular(8),
-        width: width,border: Border.all(color: Colors.white.withOpacity(0.3,),),
+        width: width,
+        border: Border.all(
+          color: Colors.white.withOpacity(
+            0.3,
+          ),
+        ),
         height: 400,
         child: const Center(
           child: DotLoadingWidget(),
@@ -54,50 +67,49 @@ class CitySearch extends StatelessWidget {
       listBuilder: (context, children) => ListView.builder(
           physics: const AlwaysScrollableScrollPhysics()
               .applyTo(const BouncingScrollPhysics()),
-      itemBuilder: (context, position) => Column(children: children)),
+          itemBuilder: (context, position) => Column(children: children)),
       decorationBuilder: (context, child) => Material(
-          type: MaterialType.card,
-          color: Colors.transparent,
-          borderRadius: BorderRadius.circular(10),
-          child: child,
-        ),
+        type: MaterialType.card,
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(10),
+        child: child,
+      ),
       builder: (context, controller, focusNode) => BlurBox(
-          blur: 10,
-          borderRadius: BorderRadius.circular(8),
-          child: TextField(
-            controller: controller,
-            focusNode: focusNode,
-            decoration:  InputDecoration(
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white.withOpacity(0.3))),
-                border:const OutlineInputBorder(),
-                hintText: 'Zanjan',
-                labelText: 'City Name...',
-                labelStyle: TextStyle(color: Colors.white.withOpacity(0.3))),
-          ),
+        blur: 10,
+        borderRadius: BorderRadius.circular(8),
+        child: TextField(
+          controller: controller,
+          focusNode: focusNode,
+          decoration: InputDecoration(
+              focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white.withOpacity(0.3))),
+              border: const OutlineInputBorder(),
+              hintText: 'Zanjan',
+              labelText: 'City Name...',
+              labelStyle: TextStyle(color: Colors.white.withOpacity(0.3))),
         ),
+      ),
       controller: textEditingController,
       suggestionsCallback: (String prefix) => getSuggestionCityUseCase(prefix),
       itemBuilder: (context, Data model) => Padding(
-          padding: const EdgeInsets.symmetric(vertical: 2),
-          child: BlurBox(
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(
-              color: Colors.white.withOpacity(0.3),
-            ),
-            blur: 10,
-            child: ListTile(
-              tileColor: Colors.transparent,
-              leading: const Icon(Icons.location_on),
-              title: Text(model.name!),
-              subtitle: Text("${model.region!}, ${model.country!}"),
-            ),
+        padding: const EdgeInsets.symmetric(vertical: 2),
+        child: BlurBox(
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(
+            color: Colors.white.withOpacity(0.3),
+          ),
+          blur: 10,
+          child: ListTile(
+            tileColor: Colors.transparent,
+            leading: const Icon(Icons.location_on),
+            title: Text(model.name!),
+            subtitle: Text("${model.region!}, ${model.country!}"),
           ),
         ),
+      ),
       onSelected: (Data model) {
         textEditingController.text = model.name!;
-        BlocProvider.of<HomeBloc>(context)
-            .add(LoadCwEvent(model.name!));
+        BlocProvider.of<HomeBloc>(context).add(LoadCwEvent(model.name!));
       },
     );
   }

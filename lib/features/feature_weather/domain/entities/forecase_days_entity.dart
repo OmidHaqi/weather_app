@@ -25,5 +25,4 @@ class ForecastDaysEntity extends Equatable {
         list,
         city,
       ];
-
 }

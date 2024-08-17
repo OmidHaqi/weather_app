@@ -15,7 +15,6 @@ class DaysWeatherView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Padding(
       padding: const EdgeInsets.only(right: 10),
       child: BlurBox(
@@ -29,25 +28,23 @@ class DaysWeatherView extends StatelessWidget {
           children: [
             Text(
               DateConverter.changeDtToDateTime(daily.dt),
-              style:
-                  const TextStyle(fontSize: 12),
+              style: const TextStyle(fontSize: 12),
             ),
             Text(
               DateConverter.changeDtToTime(daily.dt),
-              style:
-                  const TextStyle(fontSize: 12),
+              style: const TextStyle(fontSize: 12),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 5.0),
-              child: AppBackground.setIconForMain(daily.weather![0].description),
+              child:
+                  AppBackground.setIconForMain(daily.weather![0].description),
             ),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(top: 5.0),
                 child: Text(
                   "${daily.main?.temp!.round()}\u00B0C",
-                  style: const TextStyle(
-                      fontSize: 15, color: Colors.white),
+                  style: const TextStyle(fontSize: 15, color: Colors.white),
                 ),
               ),
             ),

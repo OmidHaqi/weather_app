@@ -9,7 +9,6 @@ class DotLoadingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: BlurBox(
-
         blur: 10,
         border: Border.all(
           color: Colors.white.withOpacity(0.3),

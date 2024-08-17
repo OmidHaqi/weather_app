@@ -16,7 +16,6 @@ class SaveCwEvent extends BookmarkEvent {
 
 class SaveCityInitialEvent extends BookmarkEvent {}
 
-
 class DeleteCityEvent extends BookmarkEvent {
   final String name;
   DeleteCityEvent(this.name);

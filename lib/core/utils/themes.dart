@@ -5,7 +5,6 @@ class AppTheme {
     return ThemeData(
       brightness: Brightness.dark,
       fontFamily: 'Ubuntu',
-      
     );
   }
 }

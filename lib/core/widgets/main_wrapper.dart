@@ -11,7 +11,12 @@ class MainWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> pageViewWidgets = [const HomeScreen(), BookmarkScreen(pageController: pageController,),];
+    List<Widget> pageViewWidgets = [
+      const HomeScreen(),
+      BookmarkScreen(
+        pageController: pageController,
+      ),
+    ];
     var height = MediaQuery.sizeOf(context).height;
     var width = MediaQuery.sizeOf(context).width;
     return SafeArea(
@@ -30,7 +35,7 @@ class MainWrapper extends StatelessWidget {
           )),
           child: PageView(
             physics: const AlwaysScrollableScrollPhysics()
-                  .applyTo(const BouncingScrollPhysics()),
+                .applyTo(const BouncingScrollPhysics()),
             controller: pageController,
             children: pageViewWidgets,
           ),

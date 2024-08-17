@@ -1,5 +1,4 @@
-
-class ForecastParams{
+class ForecastParams {
   num lat;
   num lon;
 

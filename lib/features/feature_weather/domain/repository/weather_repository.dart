@@ -1,5 +1,3 @@
-
-
 import '../../../../core/params/forecast_params.dart';
 import '../../../../core/resources/date_state.dart';
 import '../../data/model/suggest_city_model.dart';
@@ -12,5 +10,5 @@ abstract class IWeatherRepository {
   Future<DataState<ForecastDaysEntity>> fetchForecastWeatherData(
       ForecastParams params);
 
-    Future<List<Data>> fetchSuggestData(cityName);
+  Future<List<Data>> fetchSuggestData(cityName);
 }

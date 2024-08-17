@@ -34,7 +34,8 @@ setUp() async {
       locator(),
     ),
   );
-    locator.registerSingleton<CityRepository>(CityRepositoryImpl(dataBase.cityDao));
+  locator
+      .registerSingleton<CityRepository>(CityRepositoryImpl(dataBase.cityDao));
 
   //*Usecase
   locator.registerSingleton<GetCurrentWeatherUseCase>(
@@ -64,8 +65,4 @@ setUp() async {
       locator(),
     ),
   );
-
-
-
-
 }

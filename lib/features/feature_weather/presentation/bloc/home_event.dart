@@ -10,7 +10,6 @@ sealed class HomeEvent extends Equatable {
 class LoadCwEvent extends HomeEvent {
   final String cityName;
   const LoadCwEvent(this.cityName);
-
 }
 
 class LoadFwEvent extends HomeEvent {

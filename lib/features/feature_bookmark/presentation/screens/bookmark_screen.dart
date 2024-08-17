@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:blurbox/blurbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -49,15 +47,14 @@ class BookmarkScreen extends StatelessWidget {
                 BlurBox(
                   width: width,
                   height: 70,
-                  child:const Align(
+                  child: const Align(
                     alignment: Alignment.center,
                     child: Text(
                       'Bookmarks',
                       style: TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white
-                      ),
+                          fontSize: 26,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
                     ),
                   ),
                 ),

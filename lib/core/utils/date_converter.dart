@@ -8,7 +8,9 @@ class DateConverter {
         .format(DateTime.fromMillisecondsSinceEpoch(dt * 1000, isUtc: true));
 
     return result;
-  }  /// change dt to our TimeFormat ---24:00--- for Example
+  }
+
+  /// change dt to our TimeFormat ---24:00--- for Example
   static String changeDtToTime(dt) {
     final formatter = DateFormat.Hm();
     var result = formatter

@@ -1,7 +1,7 @@
 import 'package:clean_arcitechture_edu/features/feature_weather/domain/entities/forecase_days_entity.dart';
 
 class ForecastDaysModel extends ForecastDaysEntity {
- const ForecastDaysModel({
+  const ForecastDaysModel({
     super.city,
     super.cnt,
     super.cod,
@@ -159,7 +159,6 @@ class DataList {
   Rain? rain;
   Sys? sys;
   String? dtTxt;
-
 }
 
 /// pod : "d"
