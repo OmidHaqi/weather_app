@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/params/forecast_params.dart';
+import '../../../../core/utils/date_converter.dart';
 import '../../../../core/widgets/app_background.dart';
 import '../../../../core/widgets/dot_loading_widget.dart';
 import '../../../../locator.dart';
+import '../../../feature_bookmark/presentation/bloc/bookmark_bloc.dart';
 import '../../data/model/forecast_days_model.dart';
 import '../../domain/entities/current_city_entity.dart';
 import '../../domain/entities/forecase_days_entity.dart';
@@ -13,6 +15,7 @@ import '../../domain/use_cases/get_suggestion_city_usecase.dart';
 import '../bloc/cw_status.dart';
 import '../bloc/fw_status.dart';
 import '../bloc/home_bloc.dart';
+import '../widgets/bookmark_icon.dart';
 import '../widgets/city_search.dart';
 import '../widgets/day_weather_view.dart';
 
@@ -23,7 +26,8 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen>
+    with AutomaticKeepAliveClientMixin {
   TextEditingController textEditingController = TextEditingController();
 
   GetSuggestionCityUseCase getSuggestionCityUseCase =
@@ -37,8 +41,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     var height = MediaQuery.sizeOf(context).height;
     var width = MediaQuery.sizeOf(context).width;
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -56,6 +62,50 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
+            BlocBuilder<HomeBloc, HomeState>(buildWhen: (previous, current) {
+              if (previous.cwStatus == current.cwStatus) {
+                return false;
+              }
+              return true;
+            }, builder: (context, state) {
+              /// show Loading State for Cw
+              if (state.cwStatus is CwLoading) {
+                return const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: SizedBox(
+                      width: 50, height: 50, child: DotLoadingWidget()),
+                );
+              }
+
+              /// show Error State for Cw
+              if (state.cwStatus is CwError) {
+                return IconButton(
+                  onPressed: () {
+                    // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    //   content: Text("please load a city!"),
+                    //   behavior: SnackBarBehavior.floating, // Add this line
+                    // ));
+                  },
+                  icon: BlurBox(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: Colors.white.withOpacity(0.3),
+                      ),
+                      blur: 10,
+                      child: const Icon(Icons.error,
+                          color: Colors.white, size: 35)),
+                );
+              }
+
+              if (state.cwStatus is CwCompleted) {
+                final CwCompleted cwComplete = state.cwStatus as CwCompleted;
+                BlocProvider.of<BookmarkBloc>(context).add(
+                    GetCityByNameEvent(cwComplete.currentCityEntity.name!));
+                return BookMarkIcon(name: cwComplete.currentCityEntity.name!);
+              }
+
+              return Container();
+            }),
           ],
         ),
 
@@ -86,6 +136,12 @@ class _HomeScreenState extends State<HomeScreen> {
             BlocProvider.of<HomeBloc>(context).add(
               LoadFwEvent(forecastParams),
             );
+
+            /// change Times to Hour --5:55 AM/PM----
+            final sunrise = DateConverter.changeDtToDateTimeHour(
+                currentCityEntity.sys!.sunrise, currentCityEntity.timezone);
+            final sunset = DateConverter.changeDtToDateTimeHour(
+                currentCityEntity.sys!.sunset, currentCityEntity.timezone);
 
             return Expanded(
               child: ListView(
@@ -176,6 +232,21 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ),
+
+                  /// divider
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: Container(
+                      color: Colors.white24,
+                      height: 2,
+                      width: double.infinity,
+                    ),
+                  ),
+
+                  const SizedBox(
+                    height: 15,
+                  ),
+
                   SizedBox(
                     width: double.infinity,
                     height: 140,
@@ -230,6 +301,176 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ),
+
+                  /// divider
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: Container(
+                      color: Colors.white24,
+                      height: 2,
+                      width: double.infinity,
+                    ),
+                  ),
+
+                  const SizedBox(
+                    height: 30,
+                  ),
+
+                  /// last Row
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      BlurBox(
+                        blur: 10,
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(
+                          color: Colors.white.withOpacity(0.3),
+                        ),
+                        child: Column(
+                          children: [
+                            Text(
+                              "wind speed",
+                              style: TextStyle(
+                                  fontSize: height * 0.017,
+                                  color: Colors.amber,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10.0),
+                              child: Text(
+                                "${currentCityEntity.wind!.speed!} m/s",
+                                style: TextStyle(
+                                  fontSize: height * 0.016,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Container(
+                          color: Colors.white24,
+                          height: 30,
+                          width: 2,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
+                        child: BlurBox(
+                          blur: 10,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                            color: Colors.white.withOpacity(0.3),
+                          ),
+                          child: Column(
+                            children: [
+                              Text(
+                                "sunrise",
+                                style: TextStyle(
+                                    fontSize: height * 0.017,
+                                    color: Colors.amber,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10.0),
+                                child: Text(
+                                  sunrise,
+                                  style: TextStyle(
+                                    fontSize: height * 0.016,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Container(
+                          color: Colors.white24,
+                          height: 30,
+                          width: 2,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
+                        child: BlurBox(
+                          blur: 10,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                            color: Colors.white.withOpacity(0.3),
+                          ),
+                          child: Column(
+                            children: [
+                              Text(
+                                "sunset",
+                                style: TextStyle(
+                                    fontSize: height * 0.017,
+                                    color: Colors.amber,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10.0),
+                                child: Text(
+                                  sunset,
+                                  style: TextStyle(
+                                    fontSize: height * 0.016,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Container(
+                          color: Colors.white24,
+                          height: 30,
+                          width: 2,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
+                        child: BlurBox(
+                          blur: 10,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                            color: Colors.white.withOpacity(0.3),
+                          ),
+                          child: Column(
+                            children: [
+                              Text(
+                                "humidity",
+                                style: TextStyle(
+                                    fontSize: height * 0.017,
+                                    color: Colors.amber,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10.0),
+                                child: Text(
+                                  "${currentCityEntity.main!.humidity!}%",
+                                  style: TextStyle(
+                                    fontSize: height * 0.016,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(
+                    height: 30,
+                  ),
                 ],
               ),
             );
@@ -238,9 +479,12 @@ class _HomeScreenState extends State<HomeScreen> {
             //TODO: impl error handeling ...
             return const Expanded(child: Center(child: Text('Error')));
           }
-           return const Expanded(child: Center(child: Text('Unknow Error')));
+          return const Expanded(child: Center(child: Text('Unknow Error')));
         })
       ],
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

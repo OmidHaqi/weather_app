@@ -11,7 +11,7 @@ class MainWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> pageViewWidgets = [const HomeScreen(), const BookmarkScreen()];
+    List<Widget> pageViewWidgets = [const HomeScreen(), BookmarkScreen(pageController: pageController,),];
     var height = MediaQuery.sizeOf(context).height;
     var width = MediaQuery.sizeOf(context).width;
     return SafeArea(

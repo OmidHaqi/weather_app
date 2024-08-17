@@ -4,15 +4,15 @@ import '../../../domain/entities/city_entity.dart';
 
 @dao
 abstract class CityDao {
-  @Query('SELECT * FROM City')
+  @Query('SELECT * FROM CityEntity')
   Future<List<CityEntity>> getAllCity();
 
-  @Query('SELECT * FROM City WHERE name = :name')
+  @Query('SELECT * FROM CityEntity WHERE name = :name')
   Future<CityEntity?> findCityByName(String name);
 
   @insert
   Future<void> insertCity(CityEntity city);
 
-  @Query('DELETE FROM City WHERE name = :name')
+  @Query('DELETE FROM CityEntity WHERE name = :name')
   Future<void> deleteCityByName(String name);
 }

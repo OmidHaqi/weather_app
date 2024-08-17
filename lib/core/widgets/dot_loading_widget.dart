@@ -9,14 +9,14 @@ class DotLoadingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: BlurBox(
+
         blur: 10,
-        padding: const EdgeInsets.all(10),
         border: Border.all(
           color: Colors.white.withOpacity(0.3),
         ),
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(8),
         child: LoadingAnimationWidget.halfTriangleDot(
-          size: 50,
+          size: 35,
           color: Colors.white,
         ),
       ),

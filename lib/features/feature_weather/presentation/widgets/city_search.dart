@@ -26,6 +26,7 @@ class CitySearch extends StatelessWidget {
       emptyBuilder: (context) => BlurBox(
         blur: 10,
         borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: Colors.white.withOpacity(0.3,),),
         width: width,
         height: 400,
         child: const Center(
@@ -34,7 +35,7 @@ class CitySearch extends StatelessWidget {
       ),
       errorBuilder: (context , error) => BlurBox(
         blur: 10,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(8),border: Border.all(color: Colors.white.withOpacity(0.3,),),
         width: width,
         height: 400,
         child: const Center(
@@ -44,7 +45,7 @@ class CitySearch extends StatelessWidget {
       loadingBuilder: (context) => BlurBox(
         blur: 10,
         borderRadius: BorderRadius.circular(8),
-        width: width,
+        width: width,border: Border.all(color: Colors.white.withOpacity(0.3,),),
         height: 400,
         child: const Center(
           child: DotLoadingWidget(),
@@ -53,19 +54,14 @@ class CitySearch extends StatelessWidget {
       listBuilder: (context, children) => ListView.builder(
           physics: const AlwaysScrollableScrollPhysics()
               .applyTo(const BouncingScrollPhysics()),
-          itemBuilder: (context, position) {
-            return Column(children: children);
-          }),
-      decorationBuilder: (context, child) {
-        return Material(
+      itemBuilder: (context, position) => Column(children: children)),
+      decorationBuilder: (context, child) => Material(
           type: MaterialType.card,
           color: Colors.transparent,
           borderRadius: BorderRadius.circular(10),
           child: child,
-        );
-      },
-      builder: (context, controller, focusNode) {
-        return BlurBox(
+        ),
+      builder: (context, controller, focusNode) => BlurBox(
           blur: 10,
           borderRadius: BorderRadius.circular(8),
           child: TextField(
@@ -79,14 +75,10 @@ class CitySearch extends StatelessWidget {
                 labelText: 'City Name...',
                 labelStyle: TextStyle(color: Colors.white.withOpacity(0.3))),
           ),
-        );
-      },
+        ),
       controller: textEditingController,
-      suggestionsCallback: (String prefix) {
-        return getSuggestionCityUseCase(prefix);
-      },
-      itemBuilder: (context, Data model) {
-        return Padding(
+      suggestionsCallback: (String prefix) => getSuggestionCityUseCase(prefix),
+      itemBuilder: (context, Data model) => Padding(
           padding: const EdgeInsets.symmetric(vertical: 2),
           child: BlurBox(
             borderRadius: BorderRadius.circular(8),
@@ -101,8 +93,7 @@ class CitySearch extends StatelessWidget {
               subtitle: Text("${model.region!}, ${model.country!}"),
             ),
           ),
-        );
-      },
+        ),
       onSelected: (Data model) {
         textEditingController.text = model.name!;
         BlocProvider.of<HomeBloc>(context)
