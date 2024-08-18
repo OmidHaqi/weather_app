@@ -3,12 +3,14 @@
 
 A weather forecasting application built with Flutter, following Clean Architecture principles with a feature-based folder structure. The app features a modern blurry UI theme and offers functionalities like current weather, 5-day forecasts, and city bookmarking. This project integrates with the OpenWeatherMap API for weather data and uses the GeoDB Cities API for city selection.
 
-> [!WARNING]  
-> Critical content demanding immediate user attention due to potential risks.
+> [!IMPORTANT]
+> The purpose of this code is to implement Clean Architecture in the program.
+> You may notice bugs in the UI. If so, please submit an issue or a pull request.
+
 
 ## Features
 
-- **Current Weather Data**: Fetch real-time weather updates.
+- **Current Weather Data**: Fetch weather updates.
 - **5-Day Forecast**: View detailed weather forecasts for the next five days.
 - **City Bookmarking**: Save your favorite cities for quick access to weather updates.
 - **Blurry UI Design**: Enjoy a visually appealing, modern interface.
@@ -23,6 +25,36 @@ Ensure you have the following installed:
 
 - [Flutter](https://flutter.dev/docs/get-started/install)
 - [Dart](https://dart.dev/get-dart)
+
+
+### API Key Setup
+
+This app requires an API key from OpenWeatherMap to fetch weather data. Follow the steps below to obtain and configure your API key:
+
+1. **Get an API Key from OpenWeatherMap:**
+
+    - Visit the [OpenWeatherMap website](https://home.openweathermap.org/users/sign_up) and create an account if you don't have one.
+    - After signing up, log in to your account.
+    - Navigate to the [API keys section](https://home.openweathermap.org/api_keys) in your profile.
+    - Generate a new API key and copy it.
+
+2. **Add the API Key to the Project:**
+
+    - Open the file located at `lib/core/utils/constants.dart`.
+    - Locate the `apiKey1` variable and replace its value with your OpenWeatherMap API key. It should look like this:
+
+    ```dart
+    class Constants {
+    
+    static const apiKey1 = 'YOUR_API_KEY_HERE'; // Add your API_KEY here
+    
+
+    }
+      
+    ```
+
+    - Replace `'YOUR_API_KEY_HERE'` with the actual API key you obtained from OpenWeatherMap.
+
 
 ### Installation
 
