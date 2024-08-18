@@ -45,12 +45,10 @@ This app requires an API key from OpenWeatherMap to fetch weather data. Follow t
 
     ```dart
     class Constants {
-    
-    static const apiKey1 = 'YOUR_API_KEY_HERE'; // Add your API_KEY here
-    
+      static const baseUrl = 'https://api.openweathermap.org';
 
+      static const apiKey1 = 'YOUR_API_KEY_HERE'; // Add your API_KEY here
     }
-      
     ```
 
     - Replace `'YOUR_API_KEY_HERE'` with the actual API key you obtained from OpenWeatherMap.
@@ -61,7 +59,7 @@ This app requires an API key from OpenWeatherMap to fetch weather data. Follow t
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/weather-app.git
+    git clone https://github.com/omidhaqi/weather-app.git
     ```
 
 2. Navigate to the project directory:
