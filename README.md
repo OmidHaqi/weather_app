@@ -1,4 +1,3 @@
-
 # Weather App
 
 A weather forecasting application built with Flutter, following Clean Architecture principles with a feature-based folder structure. The app features a modern blurry UI theme and offers functionalities like current weather, 5-day forecasts, and city bookmarking. This project integrates with the OpenWeatherMap API for weather data and uses the GeoDB Cities API for city selection.
@@ -59,13 +58,13 @@ This app requires an API key from OpenWeatherMap to fetch weather data. Follow t
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/omidhaqi/weather-app.git
+    git clone https://github.com/omidhaqi/weather_app.git
     ```
 
 2. Navigate to the project directory:
 
     ```bash
-    cd weather-app
+    cd weather_app
     ```
 
 3. Install dependencies:
@@ -246,13 +245,11 @@ lib/
 
 ## Screenshots
 
-
 |                                               |                                               |
 | :-------------------------------------------: | :-------------------------------------------: |
 | <Image src="/screenshots/0.png" width ="300"> | <Image src="/screenshots/1.png" width ="300"> |
 | <Image src="/screenshots/2.png" width ="300"> | <Image src="/screenshots/3.png" width ="300"> |
-| <Image src="/screenshots/4.png" width ="300"> | <Image src="/screenshots/5.png" width ="300"> |
-| <Image src="/screenshots/6.png" width ="300"> | <Image src="/screenshots/7.png" width ="300"> |
+
 
 
 ---
