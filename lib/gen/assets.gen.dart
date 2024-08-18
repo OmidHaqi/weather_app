@@ -12,9 +12,9 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/afternoon.jpg
+  /// File path: assets/images/afternoon.webp
   AssetGenImage get afternoon =>
-      const AssetGenImage('assets/images/afternoon.jpg');
+      const AssetGenImage('assets/images/afternoon.webp');
 
   /// File path: assets/images/clouds.png
   AssetGenImage get clouds => const AssetGenImage('assets/images/clouds.png');
@@ -22,19 +22,21 @@ class $AssetsImagesGen {
   /// File path: assets/images/drizzle.png
   AssetGenImage get drizzle => const AssetGenImage('assets/images/drizzle.png');
 
-  /// File path: assets/images/evening.png
-  AssetGenImage get evening => const AssetGenImage('assets/images/evening.png');
+  /// File path: assets/images/evening.webp
+  AssetGenImage get evening =>
+      const AssetGenImage('assets/images/evening.webp');
 
   /// File path: assets/images/few_clouds.png
   AssetGenImage get fewClouds =>
       const AssetGenImage('assets/images/few_clouds.png');
 
-  /// File path: assets/images/late_night.jpg
+  /// File path: assets/images/late_night.webp
   AssetGenImage get lateNight =>
-      const AssetGenImage('assets/images/late_night.jpg');
+      const AssetGenImage('assets/images/late_night.webp');
 
-  /// File path: assets/images/morning.jpg
-  AssetGenImage get morning => const AssetGenImage('assets/images/morning.jpg');
+  /// File path: assets/images/morning.webp
+  AssetGenImage get morning =>
+      const AssetGenImage('assets/images/morning.webp');
 
   /// File path: assets/images/rain.png
   AssetGenImage get rain => const AssetGenImage('assets/images/rain.png');
@@ -42,11 +44,12 @@ class $AssetsImagesGen {
   /// File path: assets/images/snow.png
   AssetGenImage get snow => const AssetGenImage('assets/images/snow.png');
 
-  /// File path: assets/images/sunrise.jpg
-  AssetGenImage get sunrise => const AssetGenImage('assets/images/sunrise.jpg');
+  /// File path: assets/images/sunrise.webp
+  AssetGenImage get sunrise =>
+      const AssetGenImage('assets/images/sunrise.webp');
 
-  /// File path: assets/images/sunset.png
-  AssetGenImage get sunset => const AssetGenImage('assets/images/sunset.png');
+  /// File path: assets/images/sunset.webp
+  AssetGenImage get sunset => const AssetGenImage('assets/images/sunset.webp');
 
   /// File path: assets/images/suny.png
   AssetGenImage get suny => const AssetGenImage('assets/images/suny.png');
