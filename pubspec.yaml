@@ -2,7 +2,7 @@ name: clean_arcitechture_edu
 description: "A new flutter project for learn clean arctiechrure by weather app."
 publish_to: 'none'
 
-version: 0.0.1
+version: 0.0.1+1
 
 environment:
   sdk: '>=3.4.4 <4.0.0'
