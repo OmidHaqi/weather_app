@@ -123,7 +123,7 @@ To generate a code coverage report:
 
 This project follows a **feature-based Clean Architecture** structure. Each feature is organized into its own folder with separate layers for data, domain, and presentation:
 
-```bash
+```
 lib
 ├── core
 │   ├── params
