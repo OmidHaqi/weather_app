@@ -13,7 +13,7 @@ import 'package:clean_arcitechture_edu/features/feature_weather/domain/entities/
     as _i8;
 import 'package:clean_arcitechture_edu/features/feature_weather/domain/repository/weather_repository.dart'
     as _i2;
-import 'package:clean_arcitechture_edu/features/feature_weather/domain/use_cases/get_current_weather_use_case.dart'
+import 'package:clean_arcitechture_edu/features/feature_weather/domain/use_cases/get_current_weather_usecase.dart'
     as _i4;
 import 'package:clean_arcitechture_edu/features/feature_weather/domain/use_cases/get_forecast_weather_usecase.dart'
     as _i7;

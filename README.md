@@ -124,7 +124,7 @@ To generate a code coverage report:
 This project follows a **feature-based Clean Architecture** structure. Each feature is organized into its own folder with separate layers for data, domain, and presentation:
 
 ```bash
-lib/
+lib
 ├── core
 │   ├── params
 │   │   └── forecast_params.dart
@@ -192,7 +192,7 @@ lib/
 │       │   ├── repository
 │       │   │   └── weather_repository.dart
 │       │   └── use_cases
-│       │       ├── get_current_weather_use_case.dart
+│       │       ├── get_current_weather_usecase.dart
 │       │       ├── get_forecast_weather_usecase.dart
 │       │       └── get_suggestion_city_usecase.dart
 │       └── presentation

@@ -1,7 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:clean_arcitechture_edu/core/resources/date_state.dart';
 import 'package:clean_arcitechture_edu/features/feature_weather/domain/entities/current_city_entity.dart';
-import 'package:clean_arcitechture_edu/features/feature_weather/domain/use_cases/get_current_weather_use_case.dart';
+import 'package:clean_arcitechture_edu/features/feature_weather/domain/use_cases/get_current_weather_usecase.dart';
 import 'package:clean_arcitechture_edu/features/feature_weather/domain/use_cases/get_forecast_weather_usecase.dart';
 import 'package:clean_arcitechture_edu/features/feature_weather/presentation/bloc/cw_status.dart';
 import 'package:clean_arcitechture_edu/features/feature_weather/presentation/bloc/fw_status.dart';
