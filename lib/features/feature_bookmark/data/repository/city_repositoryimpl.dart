@@ -1,7 +1,7 @@
 import '../../../../core/resources/date_state.dart';
 import '../../domain/entities/city_entity.dart';
 import '../../domain/repository/city_repository.dart';
-import '../date_sorurce/local/city_dao.dart';
+import '../date_source/local/city_dao.dart';
 
 class CityRepositoryImpl extends CityRepository {
   CityDao cityDao;

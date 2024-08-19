@@ -1,4 +1,4 @@
-import 'package:clean_arcitechture_edu/features/feature_bookmark/data/date_sorurce/local/database.dart';
+import 'package:clean_arcitechture_edu/features/feature_bookmark/data/date_source/local/database.dart';
 import 'package:get_it/get_it.dart';
 
 import 'features/feature_bookmark/data/repository/city_repositoryimpl.dart';

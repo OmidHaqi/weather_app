@@ -144,7 +144,7 @@ lib/
 ├── features
 │   ├── feature_bookmark
 │   │   ├── data
-│   │   │   ├── date_sorurce
+│   │   │   ├── date_source
 │   │   │   │   └── local
 │   │   │   │       ├── city_dao.dart
 │   │   │   │       ├── database.dart
