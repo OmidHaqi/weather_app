@@ -1,6 +1,6 @@
 import 'package:clean_arcitechture_edu/core/widgets/app_background.dart';
-import 'package:clean_arcitechture_edu/features/feature_bookmark/presentation/screens/bookmark_screen.dart';
 import 'package:clean_arcitechture_edu/core/widgets/bottom_nav.dart';
+import 'package:clean_arcitechture_edu/features/feature_bookmark/presentation/screens/bookmark_screen.dart';
 import 'package:clean_arcitechture_edu/features/feature_weather/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +30,7 @@ class MainWrapper extends StatelessWidget {
           width: width,
           decoration: BoxDecoration(
               image: DecorationImage(
-            image: AppBackground.getBackGroundImage(),
+            image: AssetsFuncs.getBackGroundImage(),
             fit: BoxFit.cover,
           )),
           child: PageView(

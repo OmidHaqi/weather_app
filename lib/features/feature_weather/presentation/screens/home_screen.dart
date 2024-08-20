@@ -171,7 +171,7 @@ class _HomeScreenState extends State<HomeScreen>
                               ),
                             ),
                           ),
-                          AppBackground.setIconForMain(
+                          AssetsFuncs.setIconForMain(
                               currentCityEntity.weather![0].description!),
                           Padding(
                             padding: const EdgeInsets.only(top: 0),
