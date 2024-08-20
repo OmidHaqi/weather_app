@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 class CitySearch extends StatelessWidget {
-  const CitySearch({
+  CitySearch({
     super.key,
     required this.width,
     required this.textEditingController,
@@ -18,10 +18,13 @@ class CitySearch extends StatelessWidget {
   final double width;
   final TextEditingController textEditingController;
   final GetSuggestionCityUseCase getSuggestionCityUseCase;
+  final _focusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
     return TypeAheadField(
+      focusNode: _focusNode,
+      controller: textEditingController,
       emptyBuilder: (context) => BlurBox(
         blur: 10,
         borderRadius: BorderRadius.circular(8),
@@ -65,9 +68,10 @@ class CitySearch extends StatelessWidget {
         ),
       ),
       listBuilder: (context, children) => ListView.builder(
-          physics: const AlwaysScrollableScrollPhysics()
-              .applyTo(const BouncingScrollPhysics()),
-          itemBuilder: (context, position) => Column(children: children)),
+        physics: const AlwaysScrollableScrollPhysics()
+            .applyTo(const BouncingScrollPhysics()),
+        itemBuilder: (context, position) => Column(children: children),
+      ),
       decorationBuilder: (context, child) => Material(
         type: MaterialType.card,
         color: Colors.transparent,
@@ -79,17 +83,16 @@ class CitySearch extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         child: TextField(
           controller: controller,
-          focusNode: focusNode,
+          focusNode: _focusNode,
           decoration: InputDecoration(
               focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white.withOpacity(0.3))),
               border: const OutlineInputBorder(),
               hintText: 'Zanjan',
-              labelText: 'City Name...',
+              labelText: 'City Name',
               labelStyle: TextStyle(color: Colors.white.withOpacity(0.3))),
         ),
       ),
-      controller: textEditingController,
       suggestionsCallback: (String prefix) => getSuggestionCityUseCase(prefix),
       itemBuilder: (context, Data model) => Padding(
         padding: const EdgeInsets.symmetric(vertical: 2),
@@ -110,6 +113,7 @@ class CitySearch extends StatelessWidget {
       onSelected: (Data model) {
         textEditingController.text = model.name!;
         BlocProvider.of<HomeBloc>(context).add(LoadCwEvent(model.name!));
+        _focusNode.unfocus();
       },
     );
   }

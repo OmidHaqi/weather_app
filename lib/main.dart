@@ -9,7 +9,7 @@ main() async {
   //? source code?
   //* github.com/omidhaqi/weather_app
   //? Aks me About Flutter 
-  
+
   WidgetsFlutterBinding.ensureInitialized();
 
   //* init DI
