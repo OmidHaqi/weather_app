@@ -4,9 +4,9 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets(
-    'tapping home icon in bottom nav should move to first page in PageView',
+    'click IconButton in bottom nav shold moving to page in PageView',
     (tester) async {
-      final pageController = PageController();
+      PageController pageController = PageController();
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -21,18 +21,19 @@ void main() {
           ),
         ),
       );
-
-      await tester.tap(find.widgetWithIcon(IconButton, Icons.home));
+      await tester.tap(
+        find.widgetWithIcon(IconButton, Icons.home),
+      );
+      //? rebuild
       await tester.pumpAndSettle();
 
       expect(pageController.page, 0);
     },
   );
-
   testWidgets(
-    'tapping bookmark icon in bottom nav should move to second page in PageView',
+    'click IconButton in bottom nav shold moving to page in PageView',
     (tester) async {
-      final pageController = PageController();
+      PageController pageController = PageController();
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -47,8 +48,10 @@ void main() {
           ),
         ),
       );
-
-      await tester.tap(find.widgetWithIcon(IconButton, Icons.bookmark));
+      await tester.tap(
+        find.widgetWithIcon(IconButton, Icons.bookmark),
+      );
+      //? rebuild
       await tester.pumpAndSettle();
 
       expect(pageController.page, 1);

@@ -13,12 +13,11 @@ class BookmarkState extends Equatable {
     required this.deleteCityStatus,
   });
 
-  BookmarkState copyWith({
-    GetCityStatus? newCityStatus,
-    SaveCityStatus? newSaveStatus,
-    GetAllCityStatus? newGetAllCityStatus,
-    DeleteCityStatus? newDeleteCityStatus,
-  }) {
+  BookmarkState copyWith(
+      {GetCityStatus? newCityStatus,
+      SaveCityStatus? newSaveStatus,
+      GetAllCityStatus? newGetAllCityStatus,
+      DeleteCityStatus? newDeleteCityStatus}) {
     return BookmarkState(
       getCityStatus: newCityStatus ?? getCityStatus,
       saveCityStatus: newSaveStatus ?? saveCityStatus,
@@ -28,10 +27,6 @@ class BookmarkState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [
-        getCityStatus,
-        saveCityStatus,
-        getAllCityStatus,
-        deleteCityStatus,
-      ];
+  List<Object?> get props =>
+      [getCityStatus, saveCityStatus, getAllCityStatus, deleteCityStatus];
 }

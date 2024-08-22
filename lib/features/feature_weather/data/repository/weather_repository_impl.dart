@@ -6,7 +6,7 @@ import '../../domain/entities/current_city_entity.dart';
 import '../../domain/entities/forecase_days_entity.dart';
 import '../../domain/entities/suggest_city_entity.dart';
 import '../../domain/repository/weather_repository.dart';
-import '../date_source/remote/api_provider.dart';
+import '../date_sorurce/remote/api_provider.dart';
 import '../model/current_city_model.dart';
 import '../model/forecast_days_model.dart';
 import '../model/suggest_city_model.dart';
@@ -38,7 +38,7 @@ class WeatherRepositoryImpl extends IWeatherRepository {
   Future<DataState<ForecastDaysEntity>> fetchForecastWeatherData(
       ForecastParams params) async {
     try {
-      Response response = await apiProvider.sendRequest5DaysForecast(params);
+      Response response = await apiProvider.sendRequest5DaysForcast(params);
 
       if (response.statusCode == 200) {
         ForecastDaysEntity forecastDaysEntity =
