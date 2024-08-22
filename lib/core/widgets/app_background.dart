@@ -2,7 +2,7 @@ import 'package:clean_arcitechture_edu/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class AssetsFuncs {
+class AppBackground {
   static AssetImage getBackGroundImage() {
     DateTime now = DateTime.now();
     String formattedDate = DateFormat('kk').format(now);
@@ -50,33 +50,19 @@ class AssetsFuncs {
         Assets.images.suny.path,
       ));
     } else if (description == "few clouds") {
-      return Image(
-        image: AssetImage(Assets.images.fewClouds.path),
-      );
+      return Image(image: AssetImage(Assets.images.fewClouds.path));
     } else if (description.contains("clouds")) {
-      return Image(
-        image: AssetImage(Assets.images.clouds.path),
-      );
+      return Image(image: AssetImage(Assets.images.clouds.path));
     } else if (description.contains("thunderstorm")) {
-      return Image(
-        image: AssetImage(Assets.images.thunderstorm.path),
-      );
+      return Image(image: AssetImage(Assets.images.thunderstorm.path));
     } else if (description.contains("drizzle")) {
-      return Image(
-        image: AssetImage(Assets.images.drizzle.path),
-      );
+      return Image(image: AssetImage(Assets.images.drizzle.path));
     } else if (description.contains("rain")) {
-      return Image(
-        image: AssetImage(Assets.images.rain.path),
-      );
+      return Image(image: AssetImage(Assets.images.rain.path));
     } else if (description.contains("snow")) {
-      return Image(
-        image: AssetImage(Assets.images.snow.path),
-      );
+      return Image(image: AssetImage(Assets.images.snow.path));
     } else {
-      return Image(
-        image: AssetImage(Assets.images.windy.path),
-      );
+      return Image(image: AssetImage(Assets.images.windy.path));
     }
   }
 }

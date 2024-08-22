@@ -36,7 +36,8 @@ class DaysWeatherView extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 5.0),
-              child: AssetsFuncs.setIconForMain(daily.weather![0].description),
+              child:
+                  AppBackground.setIconForMain(daily.weather![0].description),
             ),
             Expanded(
               child: Padding(

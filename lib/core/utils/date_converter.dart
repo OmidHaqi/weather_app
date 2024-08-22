@@ -15,7 +15,8 @@ class DateConverter {
   static String changeDtToTime(dt) {
     final formatter = DateFormat.Hm();
     var result = formatter.format(
-      DateTime.fromMillisecondsSinceEpoch(dt * 1000, isUtc: true),
+      DateTime.fromMillisecondsSinceEpoch(dt * 1000,
+          isUtc: true),
     );
 
     return result;
