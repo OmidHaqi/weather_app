@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-import '../../domain/entities/forecase_days_entity.dart';
+import '../../domain/entities/forecast_days_entity.dart';
 
 @immutable
 abstract class FwStatus extends Equatable {}

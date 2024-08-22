@@ -1,4 +1,4 @@
-import 'package:clean_arcitechture_edu/features/feature_weather/domain/entities/forecase_days_entity.dart';
+import 'package:clean_arcitechture_edu/features/feature_weather/domain/entities/forecast_days_entity.dart';
 
 class ForecastDaysModel extends ForecastDaysEntity {
   const ForecastDaysModel({

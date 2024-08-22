@@ -1,7 +1,7 @@
 import 'package:blurbox/blurbox.dart';
 import 'package:clean_arcitechture_edu/core/widgets/dot_loading_widget.dart';
 import 'package:clean_arcitechture_edu/features/feature_weather/data/model/suggest_city_model.dart';
-import 'package:clean_arcitechture_edu/features/feature_weather/domain/use_cases/get_suggestion_city_usecase.dart';
+import 'package:clean_arcitechture_edu/features/feature_weather/domain/use_cases/get_suggestion_city_use_case.dart';
 import 'package:clean_arcitechture_edu/features/feature_weather/presentation/bloc/home_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

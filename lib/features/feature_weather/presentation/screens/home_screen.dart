@@ -10,8 +10,8 @@ import '../../../../locator.dart';
 import '../../../feature_bookmark/presentation/bloc/bookmark_bloc.dart';
 import '../../data/model/forecast_days_model.dart';
 import '../../domain/entities/current_city_entity.dart';
-import '../../domain/entities/forecase_days_entity.dart';
-import '../../domain/use_cases/get_suggestion_city_usecase.dart';
+import '../../domain/entities/forecast_days_entity.dart';
+import '../../domain/use_cases/get_suggestion_city_use_case.dart';
 import '../bloc/cw_status.dart';
 import '../bloc/fw_status.dart';
 import '../bloc/home_bloc.dart';
@@ -30,12 +30,16 @@ class _HomeScreenState extends State<HomeScreen>
     with AutomaticKeepAliveClientMixin {
   TextEditingController textEditingController = TextEditingController();
 
-  GetSuggestionCityUseCase getSuggestionCityUseCase =
-      GetSuggestionCityUseCase(locator());
+  GetSuggestionCityUseCase getSuggestionCityUseCase = GetSuggestionCityUseCase(
+    locator(),
+  );
   String cityName = 'Zanjan';
+
   @override
   void initState() {
-    BlocProvider.of<HomeBloc>(context).add(LoadCwEvent(cityName));
+    BlocProvider.of<HomeBloc>(context).add(
+      LoadCwEvent(cityName),
+    );
     super.initState();
   }
 
@@ -73,7 +77,10 @@ class _HomeScreenState extends State<HomeScreen>
                 return const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: SizedBox(
-                      width: 50, height: 50, child: DotLoadingWidget()),
+                    width: 50,
+                    height: 50,
+                    child: DotLoadingWidget(),
+                  ),
                 );
               }
 
@@ -87,20 +94,27 @@ class _HomeScreenState extends State<HomeScreen>
                     // ));
                   },
                   icon: BlurBox(
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
-                        color: Colors.white.withOpacity(0.3),
-                      ),
-                      blur: 10,
-                      child: const Icon(Icons.error,
-                          color: Colors.white, size: 35)),
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                      color: Colors.white.withOpacity(0.3),
+                    ),
+                    blur: 10,
+                    child: const Icon(
+                      Icons.error,
+                      color: Colors.white,
+                      size: 35,
+                    ),
+                  ),
                 );
               }
 
               if (state.cwStatus is CwCompleted) {
                 final CwCompleted cwComplete = state.cwStatus as CwCompleted;
                 BlocProvider.of<BookmarkBloc>(context).add(
-                    GetCityByNameEvent(cwComplete.currentCityEntity.name!));
+                  GetCityByNameEvent(
+                    cwComplete.currentCityEntity.name!,
+                  ),
+                );
                 return BookMarkIcon(name: cwComplete.currentCityEntity.name!);
               }
 
@@ -197,7 +211,8 @@ class _HomeScreenState extends State<HomeScreen>
                                       children: [
                                         const Text('Max'),
                                         Text(
-                                            '${currentCityEntity.main!.tempMax!.round().toString()}\u00B0C'),
+                                          '${currentCityEntity.main!.tempMax!.round().toString()}\u00B0C',
+                                        ),
                                       ],
                                     ),
                                     Padding(
@@ -213,7 +228,8 @@ class _HomeScreenState extends State<HomeScreen>
                                       children: [
                                         const Text('Min'),
                                         Text(
-                                            '${currentCityEntity.main!.tempMin!.round().toString()}\u00B0C'),
+                                          '${currentCityEntity.main!.tempMin!.round().toString()}\u00B0C',
+                                        ),
                                       ],
                                     ),
                                   ],
@@ -476,9 +492,21 @@ class _HomeScreenState extends State<HomeScreen>
             );
           }
           if (state.cwStatus is CwError) {
-            return const Expanded(child: Center(child: Text('Error')));
+            return const Expanded(
+              child: Center(
+                child: Text(
+                  'Error',
+                ),
+              ),
+            );
           }
-          return const Expanded(child: Center(child: Text('Unknow Error')));
+          return const Expanded(
+            child: Center(
+              child: Text(
+                'Unknow Error',
+              ),
+            ),
+          );
         })
       ],
     );

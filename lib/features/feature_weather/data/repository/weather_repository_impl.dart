@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import '../../../../core/params/forecast_params.dart';
 import '../../../../core/resources/date_state.dart';
 import '../../domain/entities/current_city_entity.dart';
-import '../../domain/entities/forecase_days_entity.dart';
+import '../../domain/entities/forecast_days_entity.dart';
 import '../../domain/entities/suggest_city_entity.dart';
 import '../../domain/repository/weather_repository.dart';
 import '../date_source/remote/api_provider.dart';

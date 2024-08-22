@@ -3,8 +3,8 @@ import 'package:equatable/equatable.dart';
 
 import '../../../../core/params/forecast_params.dart';
 import '../../../../core/resources/date_state.dart';
-import '../../domain/use_cases/get_current_weather_usecase.dart';
-import '../../domain/use_cases/get_forecast_weather_usecase.dart';
+import '../../domain/use_cases/get_current_weather_use_case.dart';
+import '../../domain/use_cases/get_forecast_weather_use_case.dart';
 import 'cw_status.dart';
 import 'fw_status.dart';
 
