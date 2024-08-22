@@ -1,11 +1,13 @@
 # Weather App
 
-A weather forecasting application built with Flutter, following Clean Architecture principles with a feature-based folder structure. The app features a modern blurry UI theme and offers functionalities like current weather, 5-day forecasts, and city bookmarking. This project integrates with the OpenWeatherMap API for weather data and uses the GeoDB Cities API for city selection.
+A weather forecasting application built with Flutter, following Clean Architecture principles with a
+feature-based folder structure. The app features a modern blurry UI theme and offers functionalities
+like current weather, 5-day forecasts, and city bookmarking. This project integrates with the
+OpenWeatherMap API for weather data and uses the GeoDB Cities API for city selection.
 
 > [!IMPORTANT]
 > The purpose of this code is to implement Clean Architecture in the program.
 > You may notice bugs in the UI. If so, please submit an issue or a pull request.
-
 
 ## Features
 
@@ -13,7 +15,8 @@ A weather forecasting application built with Flutter, following Clean Architectu
 - **5-Day Forecast**: View detailed weather forecasts for the next five days.
 - **City Bookmarking**: Save your favorite cities for quick access to weather updates.
 - **Blurry UI Design**: Enjoy a visually appealing, modern interface.
-- **Feature-Based Clean Architecture**: Organized code structure to separate concerns and enhance maintainability.
+- **Feature-Based Clean Architecture**: Organized code structure to separate concerns and enhance
+  maintainability.
 - **Comprehensive Testing**: Includes unit tests, bloc tests, and UI tests.
 
 ## Getting Started
@@ -25,14 +28,15 @@ Ensure you have the following installed:
 - [Flutter](https://flutter.dev/docs/get-started/install)
 - [Dart](https://dart.dev/get-dart)
 
-
 ### API Key Setup
 
-This app requires an API key from OpenWeatherMap to fetch weather data. Follow the steps below to obtain and configure your API key:
+This app requires an API key from OpenWeatherMap to fetch weather data. Follow the steps below to
+obtain and configure your API key:
 
 1. **Get an API Key from OpenWeatherMap:**
 
-    - Visit the [OpenWeatherMap website](https://home.openweathermap.org/users/sign_up) and create an account if you don't have one.
+    - Visit the [OpenWeatherMap website](https://home.openweathermap.org/users/sign_up) and create
+      an account if you don't have one.
     - After signing up, log in to your account.
     - Navigate to the [API keys section](https://home.openweathermap.org/api_keys) in your profile.
     - Generate a new API key and copy it.
@@ -40,7 +44,8 @@ This app requires an API key from OpenWeatherMap to fetch weather data. Follow t
 2. **Add the API Key to the Project:**
 
     - Open the file located at `lib/core/utils/constants.dart`.
-    - Locate the `apiKey1` variable and replace its value with your OpenWeatherMap API key. It should look like this:
+    - Locate the `apiKey1` variable and replace its value with your OpenWeatherMap API key. It
+      should look like this:
 
     ```dart
     class Constants {
@@ -51,7 +56,6 @@ This app requires an API key from OpenWeatherMap to fetch weather data. Follow t
     ```
 
     - Replace `'YOUR_API_KEY_HERE'` with the actual API key you obtained from OpenWeatherMap.
-
 
 ### Installation
 
@@ -121,7 +125,8 @@ To generate a code coverage report:
 
 ## Project Structure
 
-This project follows a **feature-based Clean Architecture** structure. Each feature is organized into its own folder with separate layers for data, domain, and presentation:
+This project follows a **feature-based Clean Architecture** structure. Each feature is organized
+into its own folder with separate layers for data, domain, and presentation:
 
 ```
 lib
@@ -216,14 +221,17 @@ lib
 
 ### Floor and SQLite Integration
 
-- The **Data Layer** of the `feature_bookmark` module uses **Floor** and **SQLite** for local data persistence.
+- The **Data Layer** of the `feature_bookmark` module uses **Floor** and **SQLite** for local data
+  persistence.
 - **Floor** serves as an abstraction layer over **SQLite**, simplifying database interactions.
-- The repository implementation in `feature_bookmark/data/repository/city_repositoryimpl.dart` interacts with Floor DAOs and SQLite directly to manage local city data.
+- The repository implementation in `feature_bookmark/data/repository/city_repositoryimpl.dart`
+  interacts with Floor DAOs and SQLite directly to manage local city data.
 
 ## Libraries & Tools Used
 
 - **[bloc](https://pub.dev/packages/bloc)** - State management.
-- **[flutter_bloc](https://pub.dev/packages/flutter_bloc)** - Flutter widgets that integrate with Bloc.
+- **[flutter_bloc](https://pub.dev/packages/flutter_bloc)** - Flutter widgets that integrate with
+  Bloc.
 - **[dio](https://pub.dev/packages/dio)** - Networking library.
 - **[sqflite](https://pub.dev/packages/sqflite)** - Local database.
 - **[floor](https://pub.dev/packages/floor)** - Database abstraction layer.
@@ -231,7 +239,8 @@ lib
 - **[flutter_typeahead](https://pub.dev/packages/flutter_typeahead)** - Autocomplete text field.
 - **[get_it](https://pub.dev/packages/get_it)** - Dependency injection.
 - **[intl](https://pub.dev/packages/intl)** - Internationalization and localization.
-- **[loading_animation_widget](https://pub.dev/packages/loading_animation_widget)** - Loading animations.
+- **[loading_animation_widget](https://pub.dev/packages/loading_animation_widget)** - Loading
+  animations.
 - **[smooth_page_indicator](https://pub.dev/packages/smooth_page_indicator)** - Page indicators.
 - **[blurbox](https://pub.dev/packages/blurbox)** - Blurry UI components.
 - **[mockito](https://pub.dev/packages/mockito)** - Mocking library for tests.
@@ -246,22 +255,20 @@ lib
 ## Screenshots
 
 |                                               |                                               |
-| :-------------------------------------------: | :-------------------------------------------: |
+|:---------------------------------------------:|:---------------------------------------------:|
 | <Image src="/screenshots/0.png" width ="300"> | <Image src="/screenshots/1.png" width ="300"> |
 | <Image src="/screenshots/2.png" width ="300"> | <Image src="/screenshots/3.png" width ="300"> |
 
-
-
 ---
-
 
 ## License
 
 This project is licensed under the Apache License - see the [LICENSE](LICENSE) file for details.
 
+##
 
 ##
-##
+
 <div align="center">
 
 Version [0.0.1+1](https://github.com/omidhaqi/)
@@ -269,6 +276,6 @@ Version [0.0.1+1](https://github.com/omidhaqi/)
 </div>
 <div align="center">
 
-Developed with  ☕ by [Umut](https://github.com/omidhaqi/)
+Developed with ☕ by [Umut](https://github.com/omidhaqi/)
 
 </div>
